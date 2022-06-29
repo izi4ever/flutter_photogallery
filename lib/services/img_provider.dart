@@ -9,6 +9,7 @@ class ImgProvider {
 
     if (response.statusCode == 200) {
       final List<dynamic> imgJson = json.decode(response.body);
+      print(imgJson);
       return imgJson.map((e) => Img.fromJson(e)).toList();
     } else {
       throw Exception('Error fetching images');
