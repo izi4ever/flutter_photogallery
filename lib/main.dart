@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'pages/home_page.dart';
 
@@ -15,19 +14,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Photogallery',
       theme: ThemeData(
-        // primarySwatch: Colors.grey,
-        primarySwatch: MaterialColor(0xFFFFFFFF, {
-          50:  Color(0xFFFFFFFF),
-          100: Color(0xFFFFFFFF),
-          200: Color(0xFFFFFFFF),
-          300: Color(0xFFFFFFFF),
-          400: Color(0xFFFFFFFF),
-          500: Color(0xFFFFFFFF),
-          600: Color(0xFFFFFFFF),
-          700: Color(0xFFFFFFFF),
-          800: Color(0xFFFFFFFF),
-          900: Color(0xFFFFFFFF),
-        }),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          centerTitle: false,
+          foregroundColor: Colors.black,
+        ),
+        progressIndicatorTheme: ProgressIndicatorThemeData(
+          circularTrackColor: Colors.black,
+          color: Colors.grey[300],
+        ),
       ),
       home: HomePage(),
     );

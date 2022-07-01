@@ -15,7 +15,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
           title: Text('Photogallery', style: GoogleFonts.courgette()),
           centerTitle: false,
-          elevation: 0,
+          // elevation: 0,
           leading: Icon(Icons.camera_rounded),
           actions: [
             IconButton(
