@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ImgBloc(imgRepository: imgRepository),
-      child: Scaffold(
+      child: const Scaffold(
         appBar: AppBarWidget(),
         body: ImgList(),
       ),

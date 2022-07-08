@@ -16,8 +16,6 @@ class ImgBloc extends Bloc<ImgEvents, ImgStates> {
         try {
           final List<Img> loadImgList = await imgRepository.getAllImg();
           emit(ImgLoadedState(loadedImg: loadImgList));
-          print(loadImgList[0].urlString);
-          print(loadImgList.length);
         } catch (_) {
           emit(ImgErrorState());
         }

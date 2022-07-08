@@ -15,28 +15,25 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
           title: Text('Photogallery', style: GoogleFonts.courgette()),
           centerTitle: false,
-          // elevation: 0,
-          // leading: Icon(Icons.camera_rounded),
-          // leading: Icon(Icons.linked_camera),
-          leading: Icon(Icons.local_see),
+          leading: const Icon(Icons.local_see),
           actions: [
             IconButton(
               onPressed: () {
                 _imgBloc.add(ImgClearEvent());
               },
-              icon: Icon(Icons.cleaning_services_outlined),
+              icon: const Icon(Icons.cleaning_services_outlined),
             ),
             IconButton(
               onPressed: () {
                 _imgBloc.add(ImgLoadEvent());
               },
-              icon: Icon(Icons.download_for_offline_sharp),
+              icon: const Icon(Icons.download_for_offline_sharp),
             ),
           ],
         );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
 }

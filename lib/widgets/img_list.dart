@@ -12,18 +12,14 @@ class ImgList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ImgBloc, ImgStates>(builder: (context, state) {
       if (state is ImgEmptyState) {
-        print(state);
-        return Center(child: Text('No data loaded, press Load button'));
+        return const Center(child: Text('No data loaded, press Load button'));
       }
       if (state is ImgLoadingState) {
-        print(state);
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(),
         );
       }
       if (state is ImgLoadedState) {
-        print(state);
-
         return MasonryGridView.count(
           itemCount: state.loadedImg.length,
           crossAxisCount: 3, 
@@ -70,10 +66,9 @@ class ImgList extends StatelessWidget {
 
       }
       if (state is ImgErrorState) {
-        print(state);
-        return Center(child: Text('Error data loading'));
+        return const Center(child: Text('Error data loading'));
       }
-      return SizedBox.shrink();
+      return const SizedBox.shrink();
     });
   }
 }
