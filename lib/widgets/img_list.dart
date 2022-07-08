@@ -31,58 +31,43 @@ class ImgList extends StatelessWidget {
           mainAxisSpacing: 3,
           crossAxisSpacing: 3,
           itemBuilder: (context, index) {
-            // return Container(
-            //   height: 100,
-            //   color: Colors.grey,
-            // );
             return CachedNetworkImage(
               imageUrl: state.loadedImg[index].urlString,
               fit: BoxFit.cover,
-              errorWidget: (context, url, error) => Icon(
-                Icons.image_not_supported_outlined,
-                size: 30,
-                color: Colors.grey[300],
+              // Если ошибка, то плагин в дебаге бросает ошибку. Но в документации плагина написано, что это нормально:
+              // https://github.com/Baseflow/flutter_cached_network_image#my-app-crashes-when-the-image-loading-failed-i-know-this-is-not-really-a-question
+              errorWidget: (context, url, error) => Container(
+                padding: const EdgeInsets.symmetric(vertical: 40),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  color: Colors.white,
+                ),
+                child: Icon(
+                  Icons.image_not_supported_outlined,
+                  size: 30,
+                  color: Colors.grey[400],
+                ),
               ),
-              placeholder: (context, url) => CircularProgressIndicator(),
 
-              // imageBuilder: (context, imageProvider) => Container(
-              //     height: 100,
-              //     width: 100,
-              //     decoration: BoxDecoration(
-              //         borderRadius: BorderRadius.all(Radius.circular(50)),
-              //         image: DecorationImage(
-              //             image: imageProvider,
-              //             fit: BoxFit.cover,
-              //         ),
-              //     ),
-              // ),
+              placeholder: (context, url) => Container(
+                padding: const EdgeInsets.symmetric(vertical: 37),
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  color: Colors.white,
+                ),
+                child: const Center(child: CircularProgressIndicator()),
+              ),
+              
+              
 
-              // imageBuilder: (context, imageProvider) => ClipRRect(
-              //   borderRadius: BorderRadius.circular(5),
-              //   child: Image(image: imageProvider),
-              // ),
+              imageBuilder: (context, imageProvider) => ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Image(image: imageProvider),
+              ),
             );
           }
         );
 
-
-        // return GridView.builder(
-        //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        //       crossAxisCount: 3,
-        //     ),
-        //     padding: const EdgeInsets.all(3.0),
-        //     itemCount: state.loadedImg.length,
-        //     itemBuilder: (BuildContext context, int index) {
-        //       return Card(
-        //         child:
-        //             Center(child: Text('${state.loadedImg[index].urlString}')),
-        //         color: Colors.amber,
-        //         elevation: 0,
-        //         shape: RoundedRectangleBorder(
-        //           borderRadius: BorderRadius.circular(0),
-        //         ),
-        //       );
-        //     });
       }
       if (state is ImgErrorState) {
         print(state);
